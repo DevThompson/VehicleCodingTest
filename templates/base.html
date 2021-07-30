@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<body>
+<form action="/vehicle" method="post">
+	<p>Vehicle Type:</p>
+	<p><input type="text" name="vehicletype" required /></p>
+	<p>Mileage:</p>
+	<p><input type="number" name="mileage" required /></p>
+	<p>Hybrid:</p>
+    <p><select name="hybrid">
+          <option value ='Y'>Yes</option>
+          <option value ='N'>No</option>
+       </select>
+    </p>
+	<p><input type="submit" value="submit"/></p>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Vehicle Type</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">Hybrid</th>
+    </tr>
+  </thead>
+	{% for result in results %}
+	<tr>
+	<th scope="row">{{result.id}}</th>
+	<td>{{result.vehicletype}}
+	</td>
+	<td>{{result.mileage}}
+	</td>
+	<td>{{result.hybrid}}
+	</tr>
+	{% endfor %}
+</table>
+
+
+  </body>
+</body>
+</html>
