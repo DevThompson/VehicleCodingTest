@@ -2,17 +2,19 @@ from flask import Flask, request, jsonify, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from dotenv import load_dotenv
-
+load_dotenv()  # take environment variables from .env.
 import os
 
-load_dotenv()  # take environment variables from .env.
+
 
 # Init App
 app = Flask(__name__)
 
+DATABASE_ROOT = os.environ.get('database_dir')
+DATABASE_DIR = os.environ.get('database_subdir')
 basedir = ".env.BASE_DIR"
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'env.DATABASE_ROOT' + os.path.join(basedir, 'env.DATABASE_DIR')
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_ROOT + os.path.join(basedir, DATABASE_DIR)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Init db
