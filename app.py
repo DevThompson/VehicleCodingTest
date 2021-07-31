@@ -10,12 +10,12 @@ import os
 # Init App
 app = Flask(__name__)
 
-BDIR = os.environ.get('BASE_DIR')
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DBROOT = os.environ.get('DATABASE_ROOT')
 DBSUBDIR = os.environ.get('DATABASE_DIR')
 
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = DBROOT + os.path.join(BDIR, DBSUBDIR)
+app.config['SQLALCHEMY_DATABASE_URI'] = DBROOT + os.path.join(BASE_DIR, DBSUBDIR)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Init db
